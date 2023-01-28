@@ -73,6 +73,11 @@ export default function SignUp() {
               <span>Log in with Apple</span>
             </button>
           </div>
+          <div className="mb-4">
+            <p className="text-center">
+              Don't have an account? <Link href="">Sign Up</Link>
+            </p>
+          </div>
         </form>
       </div>
     </div>
