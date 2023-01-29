@@ -9,7 +9,7 @@ const Hero = ({ heading }: {heading: string}) => {
             <div className='text-white z-[2] p-8 mb-[5rem] border-spacing-1'>
                 <h2 className='text-4xl mb-5'>{heading}</h2>
                 <Link href='/access'>
-                <button className='border p-2 text-sm button:hover'>Get Early Access</button>
+                <button className='border p-2 text-sm buttons buttons:hover'>Get Early Access</button>
                 </Link>
             </div>
         </div>

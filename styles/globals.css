@@ -12,11 +12,11 @@ html {
 }
 
 
-button {
+.buttons {
     transition: 600ms ease-in-out;
 }
 
-button:hover {
+.buttons:hover {
     background-color: white;
     color: black;
 }
@@ -28,11 +28,12 @@ input {
 #submitBtn:hover {
     background-color: white;
     color: black;
+    outline: none;
 }
 
 .inputBox {
     position: relative;
-    width: 250px;
+    width: 335px;
 }
 
 .inputBox input {

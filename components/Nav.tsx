@@ -23,7 +23,7 @@ const Nav = () => {
                     <ul className='hidden sm:flex right-[2%] absolute'>
                         <li>
                             <Link href='/about'>
-                                <button className='border px-2 py-1 button:hover'>
+                                <button className='border px-2 py-1 buttons buttons:hover'>
                                 About
                                 </button>
                             </Link>
