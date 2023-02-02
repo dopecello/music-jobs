@@ -32,6 +32,15 @@ export default function Access() {
         }
     } 
 
+    const facebookSignIn = async () => {
+        try {
+            const result = await signInWithPopup(auth, facebookProvider)
+            console.log(result.user)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div className='flex items-center justify-center h-screen min-h-[100vh] flex-col gap-[30px] bg-fixed bg-center bg-cover custom-img'>
             <div className='absolute top-0 bottom-0 left-0 right-0 bg-slate-900/50' />
