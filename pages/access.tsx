@@ -1,30 +1,25 @@
-// import { addDoc, collection } from 'firebase/firestore';
 import Link from 'next/link';
-// import { useState } from 'react';
 import { AiFillApple, AiFillFacebook } from 'react-icons/ai';
 import { FaGoogle } from 'react-icons/fa';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../firebase/clientApp';
 // import SignUp from '../components/SignUp';
 // import { db } from '../firebase/clientApp';
+// import { useState } from 'react';
+// import { addDoc, collection } from 'firebase/firestore';
 
 export default function Access() {
 
-    // const [firstName, setFirstName] = useState<string>("")
-    // const [lastName, setLastName] = useState<string>("")
-    // const [email, setEmail] = useState<string>("")
-    // const [role, setRole] = useState<string>("")
-
-    // async function databaseRef() {
-    //     await addDoc(collection(db, "users"), {
-    //         firstName: firstName,
-    //         lastName: lastName,
-    //         email: email,
-    //         role: role
-    //     }).then(() => {
-    //         alert('success')
-    //     }).catch(err => {
-    //         console.log(err)
-    //     })
-    // }
+    const googleProvider = new GoogleAuthProvider();
+    
+    const googleSignIn = async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider)
+            console.log(result.user)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div className='flex items-center justify-center h-screen min-h-[100vh] flex-col gap-[30px] bg-fixed bg-center bg-cover custom-img'>
@@ -54,7 +49,7 @@ export default function Access() {
                 </button>
             </div>
             <div className="z-10">
-                <button className="bg-orange-500 border-white border text-white font-bold py-2 pl-[25%] w-[333px] rounded inline-flex items-center">
+                <button onClick={googleSignIn} className="bg-orange-500 border-white border text-white font-bold py-2 pl-[25%] w-[333px] rounded inline-flex items-center">
                     <FaGoogle />
                     <span className='ml-2'>Log in with Google</span>
                 </button>
