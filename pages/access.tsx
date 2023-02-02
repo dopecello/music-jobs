@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { AiFillApple, AiFillFacebook } from 'react-icons/ai';
 import { FaGoogle } from 'react-icons/fa';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { FacebookAuthProvider } from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase/clientApp';
 // import SignUp from '../components/SignUp';
 // import { db } from '../firebase/clientApp';
@@ -21,7 +20,17 @@ export default function Access() {
         } catch (error) {
             console.log(error)
         }
-    }
+    } 
+    
+    //Sign in with Facebook
+    const facebookSignIn = async () => {
+        try {
+            const result = await signInWithPopup(auth, facebookProvider)
+            console.log(result.user)
+        } catch (error) {
+            console.log(error)
+        }
+    } 
 
     const facebookSignIn = async () => {
         try {
