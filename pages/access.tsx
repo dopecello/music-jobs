@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { AiFillApple, AiFillFacebook } from 'react-icons/ai';
 import { FaGoogle } from 'react-icons/fa';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase/clientApp';
 // import SignUp from '../components/SignUp';
 // import { db } from '../firebase/clientApp';
@@ -11,6 +11,7 @@ import { auth } from '../firebase/clientApp';
 export default function Access() {
 
     const googleProvider = new GoogleAuthProvider();
+    const facebookProvider = new FacebookAuthProvider();
     
     const googleSignIn = async () => {
         try {
@@ -19,7 +20,17 @@ export default function Access() {
         } catch (error) {
             console.log(error)
         }
-    }
+    } 
+    
+    //Sign in with Facebook
+    const facebookSignIn = async () => {
+        try {
+            const result = await signInWithPopup(auth, facebookProvider)
+            console.log(result.user)
+        } catch (error) {
+            console.log(error)
+        }
+    } 
 
     return (
         <div className='flex items-center justify-center h-screen min-h-[100vh] flex-col gap-[30px] bg-fixed bg-center bg-cover custom-img'>
@@ -43,7 +54,7 @@ export default function Access() {
             </div>
             <div className="text-center border-t-2 border-white w-[333px] z-10"></div>
             <div className="z-10">
-                <button className="bg-blue-500 border-white border text-white font-bold py-2 pl-[22%] w-[333px] rounded inline-flex items-center">
+                <button onClick={facebookSignIn} className="bg-blue-500 border-white border text-white font-bold py-2 pl-[22%] w-[333px] rounded inline-flex items-center">
                     <AiFillFacebook />
                     <span className='ml-2'>Log in with Facebook</span>
                 </button>
