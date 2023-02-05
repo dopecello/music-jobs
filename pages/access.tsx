@@ -12,7 +12,7 @@ export default function Access() {
 
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
-    
+
     const googleSignIn = async () => {
         try {
             const result = await signInWithPopup(auth, googleProvider)
@@ -20,8 +20,8 @@ export default function Access() {
         } catch (error) {
             console.log(error)
         }
-    } 
-    
+    }
+
     //Sign in with Facebook
     const facebookSignIn = async () => {
         try {
@@ -30,7 +30,7 @@ export default function Access() {
         } catch (error) {
             console.log(error)
         }
-    } 
+    }
 
     return (
         <div className='flex items-center justify-center h-screen min-h-[100vh] flex-col gap-[30px] bg-fixed bg-center bg-cover custom-img'>
@@ -52,6 +52,10 @@ export default function Access() {
                     <Link href={''}>Forgot Password?</Link>
                 </div>
             </div>
+            {/* Login button */}
+            <button className='border px-2 py-1 buttons buttons:hover max-w-[140px] fle text-center rounded-lg justify-between items-center p-4 text-white w-full z-10 ease-in duration-100'>
+                Log in
+            </button>
             <div className="text-center border-t-2 border-white w-[333px] z-10"></div>
             <div className="z-10">
                 <button onClick={facebookSignIn} className="bg-blue-500 border-white border text-white font-bold py-2 pl-[22%] w-[333px] rounded inline-flex items-center">
@@ -67,15 +71,15 @@ export default function Access() {
             </div>
             <div className=" z-10">
                 <button className="bg-black border-white border text-white font-bold py-2 pl-[26%] w-[333px] rounded inline-flex items-center">
-                <AiFillApple />
+                    <AiFillApple />
                     <span className='ml-2'>Log in with Apple</span>
                 </button>
             </div>
             <div className="z-10">
-            <p className="text-center text-white">
-              Don&apos;t have an account? <span className='underline underline-offset-[6px]'><Link href="">Sign Up</Link></span>
-            </p>
-          </div>
+                <p className="text-center text-white">
+                    Don&apos;t have an account? <span className='underline underline-offset-[6px]'><Link href="">Sign Up</Link></span>
+                </p>
+            </div>
         </div>
 
     )
