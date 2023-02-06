@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { AiFillApple, AiFillFacebook } from 'react-icons/ai';
-import { FaGoogle } from 'react-icons/fa';
+import { FaGoogle, FaLinkedin } from 'react-icons/fa';
 import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase/clientApp';
 // import SignUp from '../components/SignUp';
@@ -73,6 +73,12 @@ export default function Access() {
                 <button className="bg-black border-white border text-white font-bold py-2 pl-[26%] w-[333px] rounded inline-flex items-center">
                     <AiFillApple />
                     <span className='ml-2'>Log in with Apple</span>
+                </button>
+            </div>
+            <div className=" z-10">
+                <button className="bg-black border-white border text-white font-bold py-2 pl-[26%] w-[333px] rounded inline-flex items-center">
+                    <FaLinkedin />
+                    <span className='ml-2'>Log in with LinkedIn</span>
                 </button>
             </div>
             <div className="z-10">
