@@ -1,17 +1,24 @@
-import Link from 'next/link';
 import { AiFillApple, AiFillFacebook } from 'react-icons/ai';
-import { FaGoogle } from 'react-icons/fa';
+import { FaGoogle, FaLinkedin } from 'react-icons/fa';
 import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase/clientApp';
-// import SignUp from '../components/SignUp';
-// import { db } from '../firebase/clientApp';
-// import { useState } from 'react';
-// import { addDoc, collection } from 'firebase/firestore';
 
 export default function Access() {
 
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
+
+    const linkedInToken = {
+        redirectURI: process.env.NEXT_PUBLIC_LINKEDIN_REDIRECT_URI,
+        urlEncoded: process.env.NEXT_PUBLIC_LINKEDIN_URLENCODE,
+        clientId: process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID,
+        clientSecret: process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_SECRET
+    }
+
+    const testEnv = () => {
+        console.log(linkedInToken.redirectURI)
+        console.log("hello")
+    } 
 
     const googleSignIn = async () => {
         try {
@@ -22,7 +29,7 @@ export default function Access() {
         }
     }
 
-    //Sign in with Facebook
+
     const facebookSignIn = async () => {
         try {
             const result = await signInWithPopup(auth, facebookProvider)
@@ -30,6 +37,10 @@ export default function Access() {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const LinkedInSignIn = () => {
+        window.location.href("theurl")
     }
 
     return (
@@ -43,42 +54,38 @@ export default function Access() {
                 <input type="password" placeholder=' ' />
                 <span>Password</span>
             </div>
-            <div className="flex justify-between space-x-10 text-white z-10">
-                <div>
-                    <input type="checkbox" />
-                    <label className="pl-2">Keep me signed in</label>
-                </div>
-                <div className='underline underline-offset-[6px]'>
-                    <Link href={''}>Forgot Password?</Link>
-                </div>
+            <div className='inputBox'>
+                <input type="password" placeholder=' ' />
+                <span>Confirm Password</span>
             </div>
             {/* Login button */}
             <button className='border px-2 py-1 buttons buttons:hover max-w-[140px] fle text-center rounded-lg justify-between items-center p-4 text-white w-full z-10 ease-in duration-100'>
-                Log in
+                Sign Up
             </button>
             <div className="text-center border-t-2 border-white w-[333px] z-10"></div>
             <div className="z-10">
-                <button onClick={facebookSignIn} className="bg-blue-500 border-white border text-white font-bold py-2 pl-[22%] w-[333px] rounded inline-flex items-center">
+                <button onClick={facebookSignIn} className="bg-blue-500 border-white border text-white font-bold py-2 pl-[20%] w-[333px] rounded inline-flex items-center">
                     <AiFillFacebook />
-                    <span className='ml-2'>Log in with Facebook</span>
+                    <span className='ml-2'>Sign up with Facebook</span>
                 </button>
             </div>
             <div className="z-10">
-                <button onClick={googleSignIn} className="bg-orange-500 border-white border text-white font-bold py-2 pl-[25%] w-[333px] rounded inline-flex items-center">
+                <button onClick={googleSignIn} className="bg-orange-500 border-white border text-white font-bold py-2 pl-[23%] w-[333px] rounded inline-flex items-center">
                     <FaGoogle />
-                    <span className='ml-2'>Log in with Google</span>
+                    <span className='ml-2'>Sign up with Google</span>
                 </button>
             </div>
             <div className=" z-10">
-                <button className="bg-black border-white border text-white font-bold py-2 pl-[26%] w-[333px] rounded inline-flex items-center">
+                <button className="bg-black border-white border text-white font-bold py-2 pl-[24.5%] w-[333px] rounded inline-flex items-center">
                     <AiFillApple />
-                    <span className='ml-2'>Log in with Apple</span>
+                    <span className='ml-2'>Sign up with Apple</span>
                 </button>
             </div>
-            <div className="z-10">
-                <p className="text-center text-white">
-                    Don&apos;t have an account? <span className='underline underline-offset-[6px]'><Link href="">Sign Up</Link></span>
-                </p>
+            <div className=" z-10">
+                <button className="border-white border bg-blue-800 text-white font-bold py-2 pl-[21.5%] w-[333px] rounded inline-flex items-center" onClick={testEnv}>
+                    <FaLinkedin />
+                    <span className='ml-2'>Sign up with LinkedIn</span>
+                </button>
             </div>
         </div>
 
