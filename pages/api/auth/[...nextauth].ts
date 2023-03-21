@@ -10,7 +10,10 @@ export const authOptions = {
             clientSecret: process.env.LINKEDIN_CLIENT_SECRET!
         })
     ],
-    adapter: FirestoreAdapter(instanceProt)
+    adapter: FirestoreAdapter(instanceProt),
+    pages: {
+        signIn: "/auth/accessv2"
+    }
 }
 
 export default NextAuth(authOptions)

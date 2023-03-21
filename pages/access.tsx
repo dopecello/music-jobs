@@ -37,7 +37,7 @@ export default function Access() {
     }
 
     const linkedInSignIn = async () => {
-       await signIn()
+        await signIn()
     }
 
 
