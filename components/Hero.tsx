@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const Hero = ({ heading }: {heading: string}) => {
+const Hero = ({ heading, sessionState }: {heading: string, sessionState: string}) => {
     return (
         <div className='flex items-center justify-center h-screen min-h-[100vh] bg-fixed bg-center bg-cover custom-img'>
             {/* overlay */}
@@ -11,6 +11,9 @@ const Hero = ({ heading }: {heading: string}) => {
                 <Link href='/access'>
                 <button className='border p-2 text-sm buttons buttons:hover'>Get Early Access</button>
                 </Link>
+            </div>
+            <div className='text-white z-[2]'>
+            <span>{sessionState}</span>
             </div>
         </div>
     )

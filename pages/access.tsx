@@ -1,24 +1,21 @@
 import { AiFillApple, AiFillFacebook } from 'react-icons/ai';
 import { FaGoogle, FaLinkedin } from 'react-icons/fa';
 import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../firebase/clientApp';
+import { auth } from "../firebase.config"
+import { signIn } from "next-auth/react"
+// import { nanoid } from 'nanoid';
 
 export default function Access() {
-
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
-
-    const linkedInToken = {
-        redirectURI: process.env.NEXT_PUBLIC_LINKEDIN_REDIRECT_URI,
-        urlEncoded: process.env.NEXT_PUBLIC_LINKEDIN_URLENCODE,
-        clientId: process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID,
-        clientSecret: process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_SECRET
-    }
-
-    const testEnv = () => {
-        console.log(linkedInToken.redirectURI)
-        console.log("hello")
-    } 
+    // const linkedInToken = {
+    //     redirectURI: process.env.NEXT_PUBLIC_LINKEDIN_REDIRECT_URI,
+    //     urlEncoded: process.env.NEXT_PUBLIC_LINKEDIN_URLENCODE,
+    //     clientId: process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID,
+    //     clientSecret: process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_SECRET,
+    //     permissions: ["r_liteprofile", "r_emailaddress"].join("&20")
+    // }
+    // const stateVar = nanoid()
 
     const googleSignIn = async () => {
         try {
@@ -39,9 +36,10 @@ export default function Access() {
         }
     }
 
-    const LinkedInSignIn = () => {
-        window.location.href("theurl")
+    const linkedInSignIn = async () => {
+       await signIn()
     }
+
 
     return (
         <div className='flex items-center justify-center h-screen min-h-[100vh] flex-col gap-[30px] bg-fixed bg-center bg-cover custom-img'>
@@ -82,10 +80,12 @@ export default function Access() {
                 </button>
             </div>
             <div className=" z-10">
-                <button className="border-white border bg-blue-800 text-white font-bold py-2 pl-[21.5%] w-[333px] rounded inline-flex items-center" onClick={testEnv}>
+
+                <button className="border-white border bg-blue-800 text-white font-bold py-2 pl-[21.5%] w-[333px] rounded inline-flex items-center" onClick={linkedInSignIn}>
                     <FaLinkedin />
                     <span className='ml-2'>Sign up with LinkedIn</span>
                 </button>
+
             </div>
         </div>
 
