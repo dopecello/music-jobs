@@ -13,11 +13,21 @@ export default function SignIn({ providers }: InferGetServerSidePropsType<typeof
     linkedIn: {
       className: ['bg-blue-800', 'pl-[21.5%]']
     },
+    facebook: {
+      className: ['bg-blue-500', 'pl-[20%]']
+    },
+    google: {
+      className: ['bg-orange-500', 'pl-[23%]']
+    },
   }
 
   const assignStyles = (providers: ClientSafeProvider) => {
     if (providers.name === "LinkedIn") {
       return providerStyles.linkedIn.className.join(" ")
+    } else if (providers.name === "Google") {
+      return providerStyles.google.className.join(" ")
+    } else if (providers.name === "Facebook") {
+      return providerStyles.facebook.className.join(" ")
     }
   }
 
@@ -45,7 +55,7 @@ export default function SignIn({ providers }: InferGetServerSidePropsType<typeof
         <div key={provider.name} className='z-10'>
           <button onClick={() => signIn(provider.id)}
             className={`${assignStyles(provider)} ` + defaultBtnStyles.join(" ")}>
-              <Logo id={`${provider.id}`} name={`${provider.name}`} type={`${provider.type}`} signinUrl={`${provider.signinUrl}`} callbackUrl={`${provider.callbackUrl}`} />
+            <Logo id={`${provider.id}`} name={`${provider.name}`} type={`${provider.type}`} signinUrl={`${provider.signinUrl}`} callbackUrl={`${provider.callbackUrl}`} />
             <span className='ml-2'>Sign in with {provider.name}</span>
           </button>
         </div>

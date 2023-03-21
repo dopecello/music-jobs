@@ -2,7 +2,7 @@ import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
 
-const Hero = ({ heading, sessionState }: {heading: string, sessionState: string}) => {
+const Hero = ({ heading }: { heading: string }) => {
     const providerSignIn = () => {
         signIn();
     }
@@ -15,7 +15,6 @@ const Hero = ({ heading, sessionState }: {heading: string, sessionState: string}
                 <button className='border p-2 text-sm buttons buttons:hover' onClick={providerSignIn}>Get Early Access</button>
             </div>
             <div className='text-white z-[2]'>
-            <span>{sessionState}</span>
             </div>
         </div>
     )
