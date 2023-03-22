@@ -14,7 +14,7 @@ export const authOptions = {
         FacebookProvider({
             clientId: process.env.FACEBOOK_CLIENT_ID!,
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET!
-        }), //Will probably add Apple later once traffic increases
+        }), 
         LinkedInProvider({
             clientId: process.env.LINKEDIN_CLIENT_ID!,
             clientSecret: process.env.LINKEDIN_CLIENT_SECRET!

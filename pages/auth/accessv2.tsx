@@ -2,7 +2,6 @@ import type { GetServerSidePropsContext, InferGetServerSidePropsType } from "nex
 import { ClientSafeProvider, getProviders, signIn } from "next-auth/react"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../api/auth/[...nextauth]";
-import { OAuthProviderType } from "next-auth/providers";
 import Logo from "../../components/Logo";
 
 export default function SignIn({ providers }: InferGetServerSidePropsType<typeof getServerSideProps>) {
